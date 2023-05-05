@@ -8,7 +8,7 @@ void swap(int*x, int *y)
 }
 int main(){
 int n1,n2,n3,n4;
-printf("Enter the numbers");
+printf("Enter the numbers \n");
 scanf("%d%d%d%d",&n1,&n2,&n3,&n4);
 int *p1=&n1,*p2=&n2,*p3=&n3,*p4=&n4;
 printf(" address of the 1st and 2nd number before swapping is %u and %u \n",p1,p2);
