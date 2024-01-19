@@ -20,7 +20,7 @@ int isempty(struct stack* ptr)
 }
   int isfull(struct stack*ptr)
 {
-  if(ptr->top >=0)
+  if(ptr->top== ptr->size-1)
   {
     return 1;
   }
