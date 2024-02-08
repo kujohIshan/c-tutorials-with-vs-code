@@ -24,12 +24,12 @@ for (int j = i+1 ; j < n; j++)
     {
         index_min=j;
     }
+}
     temp = ar[i];
     ar[i] = ar[index_min];
     ar[index_min]=temp;
 }
 
-}
 printf(" The sorted array is \n");
 for (int i = 0; i < n; i++)
 {
