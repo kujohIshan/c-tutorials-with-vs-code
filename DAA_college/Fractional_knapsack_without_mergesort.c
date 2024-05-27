@@ -54,7 +54,7 @@ int main()
             X[i]=M;
         }
     }
-    printf("Total profit : % 2.f",t_profit);
+    printf("Total profit : % f",t_profit);
     printf("\n");
     printf("Indexes of selected items: ");
     for (int i = 0; i < n; i++) {
