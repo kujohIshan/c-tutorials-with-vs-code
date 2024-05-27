@@ -77,7 +77,7 @@ int main()
         X[i]=M;
       }
     }
-  printf("Total_profit is % 2.f \n",total_profit);
+  printf("Total_profit is % f \n",total_profit);
   printf("the selected Indexes are \n");
   for(int i=0;i<n;i++)
     {
