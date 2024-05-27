@@ -1,86 +1,88 @@
-#include <stdio.h>
-
-#define MAX 100
-
-typedef struct arr {
-    int profit[MAX];
-    int weight[MAX];
-} Items;
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+#include<stdio.h>
+#define Max 100
+typedef struct array{
+ int profit;
+int weight;
+}Items;
+void swap(Items *a,Items *b)
+{
+  Items temp;
+  temp= *a;
+  *a=*b;
+  *b=temp;
 }
+void sort(Items ar[], int n, float ratio[])
+{
+  float temp1;
+  for(int i=0;i<n-1;i++)
+    {
+      for(int j=0;j<n-1-i;j++)
+        {
+          if(ratio[j]<ratio[j+1])
+          {
+            temp1=ratio[j];
+            ratio[j]=ratio[j+1];
+            ratio[j+1]=temp1;
 
-void sortDes(Items array[], int n, float ratio[]) {
-    int i, j;
-    Items temp;
-    float temp_ratio;
-
-    for (i = 0; i < n - 1; i++) {
-        for (j = 0; j < n - i - 1; j++) {
-            if (ratio[j] < ratio[j + 1]) {
-                temp_ratio = ratio[j];
-                ratio[j] = ratio[j + 1];
-                ratio[j + 1] = temp_ratio;
-
-                swap(&array->profit[j],&array->profit[j+1]);
-                swap(&array->weight[j],&array->weight[j+1]);
-            }
+            swap(&ar[j],&ar[j+1]);
+          }
         }
     }
 }
-
-int main() {
-    int n, M, i, j;
-    float total_profit = 0.0;
-    Items arr;
-
-    printf("Enter the number of items in the array:\n");
-    scanf("%d", &n);
-
-    printf("Enter the capacity:\n");
-    scanf("%d", &M);
-
-    printf("Enter the profits and weights of the items:\n");
-    for (i = 0; i < n; i++) {
-        scanf("%d %d", &arr.profit[i], &arr.weight[i]);
+int main()
+{
+  int n,M;
+  Items arr[Max];
+  float ratio[Max]={0.0};
+  printf("Enter the number of items\n: ");
+  scanf("%d",&n);
+  printf("Enter the max capacity of the bag\n");
+  scanf(" %d",&M);
+  printf("Enter the profit and weight of each item\n");
+  for(int i=0;i<n;i++)
+    {
+      scanf("%d %d",&arr[i].profit, &arr[i].weight);
     }
-
-    printf("ID \t Profit \t Weight\n");
-    for (i = 0; i < n; i++) {
-        printf("%d \t %d \t %d\n", i+1, arr.profit[i], arr.weight[i]);
+  printf("the profit and weight of each item are\n");
+  printf("profit \t weight \n");
+  for(int i=0;i<n;i++)
+    {
+      printf("%d \t %10d \n",arr[i].profit,arr[i].weight);
     }
-
-    float ratio[MAX] = {0.0};
-    int X[MAX] = {0}; // for storing the ids
-    for (i = 0; i < n; i++) {
-        ratio[i] = (float) arr.profit[i] / arr.weight[i];
+  for(int i=0;i<n;i++)
+    {
+      ratio[i]= (float)arr[i].profit/arr[i].weight;
     }
-
-    sortDes(&arr, n, ratio);
-
-    for (i = 0; i < n; i++) {
-        if (M == 0) {
-            break;
-        }
-        if (arr.weight[i] <= M) {
-            total_profit += arr.profit[i];
-            M -= arr.weight[i];
-            X[i] = i+1;
-        } else {
-            total_profit += ratio[i] * M;
-            M = 0;
-            X[i] = i+1;
-        }
+  // sort the profit and weight in accordance with the ratio
+  sort(arr,n,ratio);
+  float total_profit=0.0;
+  int X[Max]={0};
+  // knapsack
+  for(int i=0;i<n;i++)
+    {
+      if(M==0)
+      {
+        break;
+      }
+      if(arr[i].weight<= M)// if the weight can be fully taken
+      {
+        total_profit+=arr[i].profit;
+        M-=arr[i].weight;
+        X[i]= 1;
+      }
+      else // if the weight cannot be taken fully
+      {
+        total_profit+= ratio[i]*M;
+        M=0;
+        X[i]=M;
+      }
     }
-    printf("Total profit is %.2f\n", total_profit);
-    printf("IDs of selected items:\n");
-    for (i = 0; i < n; i++) {
-        if (X[i] != 0) {
-            printf("%d ", X[i]);
-        }
+  printf("Total_profit is % 2.f \n",total_profit);
+  printf("the selected Indexes are \n");
+  for(int i=0;i<n;i++)
+    {
+      if(X[i]== 1)
+        printf("%d ", i);
     }
-
-    return 0;
+  return 0;
 }
