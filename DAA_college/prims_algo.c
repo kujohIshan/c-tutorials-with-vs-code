@@ -49,7 +49,6 @@ void prims(int graph[v][v])
         }
     }
     }
-    
     printmst(parent,graph);
     int total_weight=0;
     for (int i = 0; i < v; i++)
