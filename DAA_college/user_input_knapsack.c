@@ -47,7 +47,7 @@ int main()
   printf("profit \t weight \n");
   for(int i=0;i<n;i++)
     {
-      printf("%d \t %10d \n",arr[i].profit,arr[i].weight);
+      printf("%d \t %1d \n",arr[i].profit,arr[i].weight);
     }
   for(int i=0;i<n;i++)
     {
