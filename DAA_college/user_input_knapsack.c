@@ -70,7 +70,7 @@ int main()
         M-=arr[i].weight;
         X[i]= 1;
       }
-      else // if the weight cannot be taken fully
+      else if(arr[i].weight>M && M>0) // if the weight cannot be taken fully
       {
         total_profit+= ratio[i]*M;
         M=0;
