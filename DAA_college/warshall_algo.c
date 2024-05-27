@@ -33,7 +33,7 @@ void floyed(int dist[][n])
         {
             for (int j = 0; j < n; j++)
             {
-                 dist[i][j]= min(dist[i][j], dist[i][via]+dist[via][j]);
+                dist[i][j]= min(dist[i][j], dist[i][via]+dist[via][j]);
             }
             
         }
