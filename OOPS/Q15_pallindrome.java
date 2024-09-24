@@ -26,5 +26,6 @@ public class Q15_pallindrome {
         else{
             System.out.println(num+ " is not palindrome");
         }
+        sc.close();
     }
 }
