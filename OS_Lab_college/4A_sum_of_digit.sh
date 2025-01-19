@@ -9,4 +9,4 @@ function sumdigit(){
     done
     echo "the sum is $sum"
 }
-sumdigit 45
+sumdigit $1
